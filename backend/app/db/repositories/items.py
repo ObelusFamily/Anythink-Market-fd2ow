@@ -134,6 +134,8 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
             ).as_(
                 SELLER_USERNAME_ALIAS,
             ),
+        ).where(
+            items.title.like("%" + title + "%")
         )
         # fmt: on
 
