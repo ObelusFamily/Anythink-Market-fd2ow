@@ -13,7 +13,6 @@ const ItemList = (props) => {
         <div id="empty" className="py-4">
           <div className="d-flex flex-column mt-4">
             <div className="d-flex justify-content-center mt-4">
-              <script>document.getElementById("search-box").value=""</script>
               No items found for "<strong>{props.title}</strong>"
             </div>
           </div>
