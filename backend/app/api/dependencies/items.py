@@ -28,6 +28,7 @@ def get_items_filters(
 ) -> ItemsFilters:
     return ItemsFilters(
         tag=tag,
+        title=title,
         seller=seller,
         favorited=favorited,
         limit=limit,
