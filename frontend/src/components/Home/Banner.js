@@ -4,7 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 
 class Banner extends React.Component {
   state = {
-    hideSearchField: false,
+    hideSearchField: true,
   };
   render() {
     return (
