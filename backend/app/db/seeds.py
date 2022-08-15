@@ -5,15 +5,18 @@
 
 """
 
+import sys
 import asyncio
 import asyncpg
+
+sys.path.insert(0,'/usr/src/backend')
 
 # Pre-built Libraries
 from app.core.config import get_app_settings
 from app.api.dependencies.database import get_repository
 from app.db.repositories.users import UsersRepository
 from app.db.repositories.items import ItemsRepository
-from app.db.resositories.comments import CommentsRepository
+from app.db.repositories.comments import CommentsRepository
 
 seedQuantity = 100  # Mock Data Quantity
 
@@ -29,18 +32,18 @@ async def dataSeeding(seedQuantity):
         CommentsRepository(conn=connection),
     )
     for mockValue in range(1, seedQuantity + 1):
-        currentUser = await UsersRepository.create_user(
+        currentUser = await userRepo.create_user(
             email=f"user-{mockValue}@email{mockValue}.com",
             username=f"user{mockValue}",
             password=f"password{mockValue}",
         )
-        currentItem = await ItemsRepository.create_item(
+        currentItem = await itemRepo.create_item(
             slug=f"item{mockValue}",
             title=f"title{mockValue}",
             description=f"This is a description for item{mockValue}.",
             seller=currentUser,
         )
-        currentComment = await CommentsRepository.create_comment_for_item(
+        currentComment = await commentRepo.create_comment_for_item(
             body=f"This is a comment{mockValue}.", item=currentItem, user=currentUser
         )
     await connection.close()
