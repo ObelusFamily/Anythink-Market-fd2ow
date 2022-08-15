@@ -5,11 +5,12 @@
 
 """
 
+import os
 import sys
 import asyncio
 import asyncpg
 
-sys.path.insert(0,'/usr/src/backend')
+sys.path.insert(0,os.getcwd())
 
 # Pre-built Libraries
 from app.core.config import get_app_settings
