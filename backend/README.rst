@@ -33,3 +33,20 @@ Project structure
 -----------------
 
 Project dependencies are managed by poetry `(https://python-poetry.org)`, using venv `(https://docs.python.org/3/library/venv.html)`.
+
+
+Deployment
+----------
+
+Using Heroku Buildpacks:
+1. Install heroku CLI.
+2. Use these set of commands:
+   - heroku login
+   - git init
+   - heroku git:remote -a anythink-market-fd2ow-api
+   - git add .
+   - git commit -am "Production Deployment"
+   - heroku buildpacks:set https://github.com/timanovsky/subdir-heroku-buildpack
+   - heroku buildpacks:add heroku/python
+   - heroku config:set PROJECT_PATH=backend/
+   - git push heroku main
